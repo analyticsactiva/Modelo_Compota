@@ -1,22 +1,13 @@
 import pandas as pd
 import numpy as np
-
 import time
 import pickle
-
 from sklearn.preprocessing import StandardScaler
-
 from sklearn.svm import LinearSVC
-#from sklearn.metrics import classification_report, confusion_matrix
-
 import streamlit as st
 import streamlit_authenticator as stauth
-
 from streamlit_authenticator.utilities.hasher import Hasher
-
 from openpyxl import load_workbook
-#import xlsxwriter
-
 import yaml
 from yaml.loader import SafeLoader
 
