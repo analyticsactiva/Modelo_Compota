@@ -5,6 +5,7 @@ import pyreadstat as prs
 import matplotlib.pyplot as plt
 import seaborn as sns
 import time
+import pickle
 
 from sklearn.preprocessing import StandardScaler
 
@@ -173,12 +174,14 @@ y = df['CLUSTER']
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
-
+# load the model from disk
+filename = 'finalized_model.sav'
+modelo_svm2 = pickle.load(open(filename, 'rb'))
 
 # Creación del modelo SVM lineal
 # ==============================================================================
-modelo_svm2 = LinearSVC(penalty = 'l2', C = 100, random_state=123)
-modelo_svm2.fit(X, y)
+#modelo_svm2 = LinearSVC(penalty = 'l2', C = 100, random_state=123)
+#modelo_svm2.fit(X, y)
 
 def get_cluster(new_x):
     x_pred = scaler.transform(new_x)
@@ -209,7 +212,7 @@ def change_label_style(label, font_size='12px', font_color='black', font_family=
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-hashed_passwords = Hasher(['abc', 'def']).generate()
+hashed_passwords = Hasher(['Baf60255', 'activa1']).generate()
 
 authenticator = stauth.Authenticate(
     config['credentials'],
